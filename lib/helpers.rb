@@ -8,7 +8,7 @@ module Helpers
   end
 
   def remove_dot_dirs( string_array )
-    string_array.reject {|string| string == '.' || string == '..'}
+    string_array.reject {|string| string =~ /^\..*/ }
   end
 
   def underscores_to_whitespace( string )
@@ -17,5 +17,10 @@ module Helpers
 
   def gen_dir_list( string_array )
     string_array = remove_dot_dirs( string_array )
+  end
+
+  def snake_to_title( snake_str )
+    title = underscores_to_whitespace( snake_str )
+    title.prepend(title.slice!(0).swapcase)
   end
 end

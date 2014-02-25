@@ -1,0 +1,14 @@
+- gen_dir_list(Dir.entries(media_path + '/web_art')).each do |file|
+  - content = File.open(media_path + '/web_art/' + file) do |file|
+    - Psych.load(file)
+  %h3
+    - if content['url']
+      %a{:href => content['url']}= snake_to_title(File.basename(file, '.yaml'))
+    - else
+      = snake_to_title(File.basename(file, '.yaml'))
+  %p= content['description']
+  - if content['urls']
+    - content['urls'].each do |piece|
+      %p
+        %a{ :href => piece['url'] } 
+          = piece['title']

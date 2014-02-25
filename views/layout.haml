@@ -6,7 +6,7 @@
   %body
     %h1 HUSHES
     %ul
-    - gen_dir_list(Dir.entries(media_path)).each do |string|
+    - gen_dir_list(Dir.entries(media_path)).rotate(2).each do |string|
       %li
         %a{:href => string}= underscores_to_whitespace( string )
     = yield

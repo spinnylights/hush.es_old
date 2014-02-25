@@ -15,4 +15,8 @@ class TestHelpers < Minitest::Test
   def test_gen_dir_list
     assert_equal gen_dir_list(['.', '..', 'bag']), ['bag']
   end
+
+  def test_snake_to_title
+    assert_equal snake_to_title('wag_a_bag'), 'Wag a bag'
+  end
 end
